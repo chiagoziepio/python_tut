@@ -2,6 +2,8 @@ import random
 from enum import Enum
 import sys
 
+gameCount = 1
+
 def playGame():
     class RPS(Enum):
         ROCK = 1
@@ -24,17 +26,28 @@ def playGame():
         print("you chose", " " ,str(RPS(convertedPlayerChoice)).replace("RPS.", ""))
         print("python chose", " " ,str(RPS(convertedPythonChoice)).replace("RPS.", ""))
 
-        if convertedPlayerChoice == convertedPythonChoice:
-            print("it's a tie")
-        elif convertedPlayerChoice == RPS.ROCK.value and convertedPythonChoice == RPS.PAPER.value:
-            print("python wins")
-        elif convertedPlayerChoice == RPS.PAPER.value and convertedPythonChoice == RPS.SCISSORS.value:
-            print("python wins")
-        elif convertedPlayerChoice == RPS.SCISSORS.value and convertedPythonChoice == RPS.ROCK.value:
-            print("python wins")
-        else: 
-            print("you win")
-    
+        def decideWinner(convertedPlayerChoice, convertedPythonChoice):
+
+            if convertedPlayerChoice == convertedPythonChoice:
+                return "it's a tie"
+            elif convertedPlayerChoice == RPS.ROCK.value and convertedPythonChoice == RPS.PAPER.value:
+                return "python wins"
+            elif convertedPlayerChoice == RPS.PAPER.value and convertedPythonChoice == RPS.SCISSORS.value:
+                return "python wins"
+            elif convertedPlayerChoice == RPS.SCISSORS.value and convertedPythonChoice == RPS.ROCK.value:
+                return "python wins"
+            else: 
+                return "you win"
+
+        gameResult = decideWinner(convertedPlayerChoice, convertedPythonChoice)
+        print(gameResult)
+
+        
+
+        global gameCount
+        print("game " + str(gameCount) + " is over")
+        gameCount += 1
+
         while True:
             playagain = input("\n do you want to play again? y/q \n")
             if playagain.lower() not in ["y", "q"]:
