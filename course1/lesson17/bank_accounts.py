@@ -1,4 +1,7 @@
+
+
 class BalanceException(Exception):
+    
     pass
 
 class BankAccount():
@@ -14,6 +17,7 @@ class BankAccount():
         self.balance += amount
         print(f"Deposit of ${amount:.2f} successful.")
         self.getBalance()
+        
     def viableTransacion(self, amount):
         if amount > self.balance:
             raise BalanceException(f"Account '{self.name}' has insufficient funds.")
