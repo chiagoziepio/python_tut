@@ -9,7 +9,7 @@ load_dotenv()
 
 def get_weather(city = "Enugu"):
     Api_key = os.getenv("API_KEY")
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Api_key}&units=imperial"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Api_key}&units=metric"
     res = requests.get(url)
     data = res.json()
     return data
